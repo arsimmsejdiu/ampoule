@@ -1,6 +1,5 @@
-<?php
-require 'header.php';
-
+<?php 
+    require('header.php');
 ?>
 
 <body id="body-pd">
@@ -30,9 +29,9 @@ require 'header.php';
                         <span class="nav__name">Dashboard</span>
                     </a>
 
-                    <a href="create.php" class="nav__link">
+                    <a href="#" class="nav__link">
                         <i class='bx bx-user nav__icon'></i>
-                        <span class="nav__name">Create Ampoule</span>
+                        <span class="nav__name">Users</span>
                     </a>
 
                     <a href="#" class="nav__link">
@@ -64,9 +63,7 @@ require 'header.php';
         </nav>
     </div>
 
-    <h1>Components</h1>
+    <h1>Create Ampoule</h1>
     <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
 </body>
-
-</html>
