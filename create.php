@@ -19,25 +19,24 @@ if (isset($_POST['submit'])) {
 	}
 }
 ?>
+
 <body>
 	<div class="signup-form pos">
 		<form method="POST">
 			<h2>Ajouter Une Nouvelle Ampoule</h2>
 			<p class="hint-text">Remplir tous les champs</p>
 			<div class="form-group">
-				<div class="row">
-					<div class="col"><input type="text" class="form-control" name="etage" placeholder="Etage" required="true"></div>
-				</div>
+				<div class="col"><input type="text" class="form-control" name="etage" placeholder="Etage" required="true"></div>
 			</div>
 			<div class="form-group">
 				<input type="text" class="form-control" name="price" placeholder="Entrez le Prix de l'ampoule" required="true" ">
 			</div>
 
-            <div class="form-group">
+            <div class=" form-group">
 				<input type="text" class="form-control" name="position" placeholder="Entrez le Position de l'ampoule" required="true" ">
 			</div>
 
-			<div class="form-group">
+			<div class=" form-group">
 				<button type="submit" class="btn btn-success btn-lg btn-block" name="submit">Submit</button>
 			</div>
 		</form>

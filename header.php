@@ -27,6 +27,7 @@ if (isset($_SESSION['user_email']) && !empty($_SESSION['user_email'])) {
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="./assets/css/table.css">
     <link rel="stylesheet" href="./assets/css/forms.css">
+    <link rel="stylesheet" href="./assets/css/snackbar.css">
 
     <title>Ampoule Logistics</title>
 </head>

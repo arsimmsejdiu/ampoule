@@ -191,4 +191,14 @@ a{
   }
 }
 
+.view {
+  background-color: lightblue;
+}
 
+.edit{
+  background-color: lightgreen;
+}
+
+.delete {
+  background-color: lightcoral;
+}

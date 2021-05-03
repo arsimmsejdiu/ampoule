@@ -5,9 +5,9 @@ include('./db_connection.php');
 //Code for deletion
 if (isset($_GET['delid'])) {
     $rid = intval($_GET['delid']);
-    $sql = mysqli_query($db_connection, "delete from historique where ID=$rid");
+    $sql = mysqli_query($db_connection, "delete from historique where id=$rid");
     echo "<script>alert('Data deleted');</script>";
-    echo "<script>window.location.href = 'index.php'</script>";
+    echo "<script>window.location.href = 'home.php'</script>";
 }
 ?>
 <table>
@@ -41,9 +41,9 @@ if (isset($_GET['delid'])) {
                     <td> <?php echo $row['position']; ?></td>
                     <td> <?php echo $row['createdAt']; ?></td>
                     <td>
-                        <a href="read.php?viewid=<?php echo htmlentities($row['ID']); ?>" class="view" title="View" data-toggle="tooltip"><i class="far fa-eye"></i></a>
-                        <a href="edit.php?editid=<?php echo htmlentities($row['ID']); ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                        <a href="index.php?delid=<?php echo ($row['ID']); ?>" class="delete" title="Delete" data-toggle="tooltip" onclick="return confirm('Do you really want to Delete ?');"><i class="material-icons">&#xE872;</i></a>
+                        <a href="read.php?viewid=<?php echo htmlentities($row['id']); ?>" class="view" title="View" data-toggle="tooltip"><button style="background-color: lightblue;border: none;cursor: pointer; padding: 5px 10px;">View</button></a>
+                        <a href="edit.php?editid=<?php echo htmlentities($row['id']); ?>" class="edit" title="Edit" data-toggle="tooltip"><button style="background-color: lightgreen;border: none;cursor: pointer;padding: 5px 10px;">Edit</button></a>
+                        <a href="index.php?delid=<?php echo ($row['id']); ?>" class="delete" title="Delete" data-toggle="tooltip" onclick="return confirm('Do you really want to Delete ?');"><button style="background-color: lightcoral;border: none;cursor: pointer;padding: 5px 10px;">Delete</button></a>
                     </td>
                 </tr>
             <?php
