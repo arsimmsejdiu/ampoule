@@ -1,69 +1,50 @@
-<?php 
-    require('header.php');
+<?php
+include('./db_connection.php');
+require('header.php');
+// require('header-1.php');
+
+if (isset($_POST['submit'])) {
+	//getting the post values
+	$etage = $_POST['etage'];
+	$price = $_POST['price'];
+	$position = $_POST['position'];
+
+	// Query for data insertion
+	$query = mysqli_query($db_connection, "insert into historique(etage,price, position) value('$etage','$price', '$position' )");
+	if ($query) {
+		echo "<script>alert('You have successfully inserted the data');</script>";
+		echo "<script type='text/javascript'> document.location ='index.php'; </script>";
+	} else {
+		echo "<script>alert('Something Went Wrong. Please try again');</script>";
+	}
+}
 ?>
+<body>
+	<div class="signup-form pos">
+		<form method="POST">
+			<h2>Ajouter Une Nouvelle Ampoule</h2>
+			<p class="hint-text">Remplir tous les champs</p>
+			<div class="form-group">
+				<div class="row">
+					<div class="col"><input type="text" class="form-control" name="etage" placeholder="Etage" required="true"></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="price" placeholder="Entrez le Prix de l'ampoule" required="true" ">
+			</div>
 
-<body id="body-pd">
-    <header class="header" id="header">
-        <div class="header__toggle">
-            <i class='bx bx-menu' id="header-toggle"></i>
-        </div>
+            <div class="form-group">
+				<input type="text" class="form-control" name="position" placeholder="Entrez le Position de l'ampoule" required="true" ">
+			</div>
 
-        <!-- <div class="header__img">
-                <img src="assets/img/perfil.jpg" alt="">
-            </div> -->
-        <h4>Hello, <?php echo $userData['username']; ?></h4>
-        <small><a href="logout.php">Logout</a></small>
-    </header>
-
-    <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-            <div>
-                <a href="#" class="nav__logo">
-                    <i class='bx bx-layer nav__logo-icon'></i>
-                    <span class="nav__logo-name">Ampoule </span>
-                </a>
-
-                <div class="nav__list">
-                    <a href="#" class="nav__link active">
-                        <i class='bx bx-grid-alt nav__icon'></i>
-                        <span class="nav__name">Dashboard</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-user nav__icon'></i>
-                        <span class="nav__name">Users</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-message-square-detail nav__icon'></i>
-                        <span class="nav__name">Messages</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-bookmark nav__icon'></i>
-                        <span class="nav__name">Favorites</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-folder nav__icon'></i>
-                        <span class="nav__name">Data</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-bar-chart-alt-2 nav__icon'></i>
-                        <span class="nav__name">Analytics</span>
-                    </a>
-                </div>
-            </div>
-
-            <a href="#" class="nav__link">
-                <i class='bx bx-log-out nav__icon'></i>
-                <span class="nav__name">Log Out</span>
-            </a>
-        </nav>
-    </div>
-
-    <h1>Create Ampoule</h1>
-    <!--===== MAIN JS =====-->
-    <script src="assets/js/main.js"></script>
+			<div class="form-group">
+				<button type="submit" class="btn btn-success btn-lg btn-block" name="submit">Submit</button>
+			</div>
+		</form>
+		<div class="text-center">View Already Inserted Data!! <a href="index.php">View</a></div>
+	</div>
 </body>
+
+<?php
+require('footer.php')
+?>

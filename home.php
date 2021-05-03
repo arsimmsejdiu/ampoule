@@ -1,72 +1,62 @@
 <?php
 require 'header.php';
-
+//database conection  file
+include('./db_connection.php');
+//Code for deletion
+if (isset($_GET['delid'])) {
+    $rid = intval($_GET['delid']);
+    $sql = mysqli_query($db_connection, "delete from historique where ID=$rid");
+    echo "<script>alert('Data deleted');</script>";
+    echo "<script>window.location.href = 'index.php'</script>";
+}
 ?>
+<table>
+    <caption>L'historique Les Ampoules</caption>
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Etage</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Position</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
 
-<body id="body-pd">
-    <header class="header" id="header">
-        <div class="header__toggle">
-            <i class='bx bx-menu' id="header-toggle"></i>
-        </div>
+        <?php
+        $ret = mysqli_query($db_connection, "select * from historique");
+        $cnt = 1;
+        $row = mysqli_num_rows($ret);
+        if ($row > 0) {
+            while ($row = mysqli_fetch_array($ret)) {
 
-        <!-- <div class="header__img">
-                <img src="assets/img/perfil.jpg" alt="">
-            </div> -->
-        <h4>Hello, <?php echo $userData['username']; ?></h4>
-        <small><a href="logout.php">Logout</a></small>
-    </header>
+        ?>
+                <!--Fetch the Records -->
+                <tr>
+                    <!-- <td><?php echo $cnt; ?></td> -->
+                    <td><?php echo $row['id']; ?></td>
+                    <td>Etage <?php echo $row['etage']; ?></td>
+                    <td>$ <?php echo $row['price']; ?></td>
+                    <td> <?php echo $row['position']; ?></td>
+                    <td> <?php echo $row['createdAt']; ?></td>
+                    <td>
+                        <a href="read.php?viewid=<?php echo htmlentities($row['ID']); ?>" class="view" title="View" data-toggle="tooltip"><i class="far fa-eye"></i></a>
+                        <a href="edit.php?editid=<?php echo htmlentities($row['ID']); ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                        <a href="index.php?delid=<?php echo ($row['ID']); ?>" class="delete" title="Delete" data-toggle="tooltip" onclick="return confirm('Do you really want to Delete ?');"><i class="material-icons">&#xE872;</i></a>
+                    </td>
+                </tr>
+            <?php
+                $cnt = $cnt + 1;
+            }
+        } else { ?>
+            <tr>
+                <th style="text-align:center; color:red;" colspan="6">No Record Found</th>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
 
-    <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-            <div>
-                <a href="#" class="nav__logo">
-                    <i class='bx bx-layer nav__logo-icon'></i>
-                    <span class="nav__logo-name">Ampoule </span>
-                </a>
-
-                <div class="nav__list">
-                    <a href="#" class="nav__link active">
-                        <i class='bx bx-grid-alt nav__icon'></i>
-                        <span class="nav__name">Dashboard</span>
-                    </a>
-
-                    <a href="create.php" class="nav__link">
-                        <i class='bx bx-user nav__icon'></i>
-                        <span class="nav__name">Create Ampoule</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-message-square-detail nav__icon'></i>
-                        <span class="nav__name">Messages</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-bookmark nav__icon'></i>
-                        <span class="nav__name">Favorites</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-folder nav__icon'></i>
-                        <span class="nav__name">Data</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-bar-chart-alt-2 nav__icon'></i>
-                        <span class="nav__name">Analytics</span>
-                    </a>
-                </div>
-            </div>
-
-            <a href="#" class="nav__link">
-                <i class='bx bx-log-out nav__icon'></i>
-                <span class="nav__name">Log Out</span>
-            </a>
-        </nav>
-    </div>
-
-    <h1>Components</h1>
-    <!--===== MAIN JS =====-->
-    <script src="assets/js/main.js"></script>
-</body>
-
-</html>
+<?php
+require('footer.php')
+?>
