@@ -10,10 +10,9 @@ if (isset($_POST['submit'])) {
 	$position = $_POST['position'];
 
 	// Query for data insertion
-	$query = mysqli_query($db_connection, "insert into historique(etage,price, position) value('$etage','$price', '$position' )");
+	$query = mysqli_query($db_connection, "insert into historique(etage, price, position) value('$etage','$price', '$position' )");
 	if ($query) {
-		echo "<script>alert('You have successfully inserted the data');</script>";
-		echo "<script type='text/javascript'> document.location ='index.php'; </script>";
+		echo "<script type='text/javascript'> document.location ='home.php'; </script>";
 	} else {
 		echo "<script>alert('Something Went Wrong. Please try again');</script>";
 	}
@@ -37,11 +36,12 @@ if (isset($_POST['submit'])) {
 			</div>
 
 			<div class=" form-group">
-				<button type="submit" class="btn btn-success btn-lg btn-block" name="submit">Submit</button>
+				<button onclick="myFunction()" type="submit" class="btn btn-success btn-lg btn-block" name="submit">Submit</button>
 			</div>
 		</form>
 		<div class="text-center">View Already Inserted Data!! <a href="index.php">View</a></div>
 	</div>
+	<div id="snackbar">Some text some message..</div>
 </body>
 
 <?php
