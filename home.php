@@ -56,8 +56,8 @@ if (isset($_GET['did'])) {
         <?php } ?>
     </tbody>
 </table>
-<div class="btn-h form-group">
-    <button onclick="myFunction()" class="btn btn-success btn-lg btn-block"><a href="create.php">Ajoute D'Ampoule</a></button>
+<div class="form-group btn-h">
+    <button onclick="myFunction()" class="btn btn-success btn-lg btn-block btn-h"><a href="create.php">Ajoute D'Ampoule</a></button>
 </div>
 <?php
 require('footer.php')

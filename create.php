@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
 <body>
 	<div class="signup-form pos">
 		<form method="POST">
-			<h2>Ajouter Une Nouvelle Ampoule</h2>
+			<h2>Ajouter Ampoule</h2>
 			<p class="hint-text">Remplir tous les champs</p>
 			<div class="form-group">
 				<div class="col"><input type="text" class="form-control" name="etage" placeholder="Etage" required="true"></div>
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 				<button onclick="myFunction()" type="submit" class="btn btn-success btn-lg btn-block" name="submit">Submit</button>
 			</div>
 		</form>
-		<div class="text-center">View Already Inserted Data!! <a href="index.php">View</a></div>
+		<div class="text-center">View Already Inserted Data!! <a href="home.php">View</a></div>
 	</div>
 	<div id="snackbar">Some text some message..</div>
 </body>
